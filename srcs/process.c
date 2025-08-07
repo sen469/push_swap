@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_message.c                                    :+:      :+:    :+:   */
+/*   process.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/05 16:52:34 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/04 18:37:15 by ssawa            ###   ########.fr       */
+/*   Created: 2025/08/04 18:47:13 by ssawa             #+#    #+#             */
+/*   Updated: 2025/08/06 14:00:40 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+// #include "libft/libft.h"
 #include "push_swap.h"
+#include "struct.h"
 
-int	arg_error(void)
+void	process(t_vec *vec)
 {
-	write(2, "Error\n", 6);
-	// write(1, "Argument, Error\n", 17);
-	return (-1);
+	t_vec	lis;
+
+	lis = process_lis(vec);
 }

@@ -6,14 +6,29 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:50:21 by ssawa             #+#    #+#             */
-/*   Updated: 2025/07/18 11:02:34 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/04 17:18:35 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "libft/libft.h"
 
+static int	check_str_is_num(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (-1);
+		i++;
+	}
+	return (0);
+}
+
 // ac == 2のときの文字列チェック
+// ""で数字の集合が1つの文字列になっているとき
 static int	arg2_check(char *str)
 {
 	int	i;
@@ -21,7 +36,7 @@ static int	arg2_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] != ' ' && ft_isdigit(str[i]))
+		if (str[i] != ' ' && !ft_isdigit(str[i]))
 		{
 			return (arg_error());
 		}
@@ -30,41 +45,44 @@ static int	arg2_check(char *str)
 }
 
 // ac >=3 の時のチェック
-static int	check_args(int ac, char **argv)
+// 数字の文字列の集合が渡されたとき
+static int	check_args(int argc, char **argv)
 {
 	int	i;
 	int	flag;
 
 	i = 1;
 	flag = 1;
-	while (i < ac)
+	while (i < argc)
 	{
-		if (argv[i])
+		if (check_str_is_num(argv[i]))
 		{
-
+			return (-1);
 		}
 	}
+	return (0);
 }
 
-int	valid(int ac, char **str, t_node **node)
+int	valid(int argc, char **argv, t_vec *vec)
 {
 	int	i;
 
 	i = 0;
 	// 引数の個数チェック
-	if (ac == 1)
+	if (argc == 1)
 	{
 		return (arg_error());
 	}
 	// 引数が2つの時
-	else if (ac == 2)
+	else if (argc == 2)
 	{
-		return (arg2_check(str[1]));
+		return (arg2_check(argv[1]));
 	}
-	// それ以外
+	// 2以上の時
 	else
 	{
-
+		return(check_args(argc, argv));
 	}
-	return (0);
+	vec->arr = make_arr(argc, argv, &(vec->size));
+	return (check_arr(vec->arr, vec->size));
 }
