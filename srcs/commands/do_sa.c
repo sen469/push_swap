@@ -11,11 +11,16 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "struct.h"
 
 void	do_sa(t_node *st_a)
 {
-	if (!st_a)
+	t_node	tmp_a;
+
+	// 要素が2つ以上あることを確認
+	if (st_a->next != st_a->prev)
 	{
+
 		write(1, "sa\n", 3);
 	}
 }
