@@ -16,7 +16,6 @@ void	do_ra(t_node *st_a)
 {
 	t_node	*tmp_a;
 
-	// スタックに要素が2つ以上があることを確認する
 	if  (st_a->next != st_a->prev)
 	{
 		tmp_a = st_a->next;

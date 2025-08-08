@@ -36,7 +36,10 @@ int	*make_arr(int argc, char **argv, int *size)
 		str_arr = ft_split(argv[1], ' ');
 	else
 		str_arr = &argv[1];
+	// arr_size関数がおかしい
+	// 文字列の個数を数える関数
 	*size = arr_size(str_arr);
+	// printf("arr_checks.c size = %d\n", *size);
 	int_arr = ft_calloc(*size, sizeof(int));
 	i = 0;
 	while (str_arr[i])

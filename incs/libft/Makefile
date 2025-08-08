@@ -1,6 +1,6 @@
 NAME = libft.a
 
-SRCS = 	ft_atoi.c \
+SRCS =	ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -21,7 +21,6 @@ SRCS = 	ft_atoi.c \
 		ft_putstr_fd.c \
 		ft_split.c \
 		ft_strchr.c \
-		ft_strcmp.c \
 		ft_strdup.c \
 		ft_striteri.c \
 		ft_strjoin.c \
@@ -46,9 +45,12 @@ BSRCS =	ft_lstadd_back_bonus.c \
 		ft_lstlast_bonus.c \
 		ft_lstmap_bonus.c \
 		ft_lstnew_bonus.c \
-		ft_lstsize_bonus.c
+		ft_lstsize_bonus.c \
 
-MY_SRCS = ft_binary_search.c \
+MY_SRCS =	ft_binary_search.c \
+			ft_min.c \
+			ft_max.c \
+			ft_strcmp.c \
 
 OBJS = $(SRCS:.c=.o)
 BOBJS = $(BSRCS:.c=.o)
@@ -62,16 +64,16 @@ RM = rm -f
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS) $(BOBJS) $(MY_SRCS)
+$(NAME): $(OBJS) $(BOBJS) $(MY_OBJS)
 	$(AR) $(NAME) $(OBJS) $(BOBJS) $(MY_OBJS)
 
 all: $(NAME)
 
-bonus: $(OBJS) $(BOBJS)
-	$(AR) $(NAME) $(OBJS) $(BOBJS)
+bonus: $(OBJS) $(BOBJS) $(MY_OBJS)
+	$(AR) $(NAME) $(OBJS) $(BOBJS) $(MY_OBJS)
 
 clean:
-	$(RM) $(OBJS) $(BOBJS)
+	$(RM) $(OBJS) $(BOBJS) $(MY_OBJS)
 
 fclean: clean
 	$(RM) $(NAME)

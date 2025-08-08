@@ -14,7 +14,7 @@
 
 int	arg_error(void)
 {
-	write(2, "Error\n", 6);
+	write(1, "Error\n", 6);
 	// write(1, "Argument, Error\n", 17);
 	return (-1);
 }

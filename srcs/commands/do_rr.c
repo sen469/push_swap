@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "struct.h"
 
 void	do_rr(t_node *st_a, t_node *st_b)
 {

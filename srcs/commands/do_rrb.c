@@ -14,8 +14,17 @@
 
 void	do_rrb(t_node *st_b)
 {
-	if (!st_b)
+	t_node	*tmp_b;
+
+	if (st_b->next != st_b->prev)
 	{
+		tmp_b = st_b->prev;
+		st_b->prev = tmp_b->prev;
+		st_b->prev->next = st_b;
+		tmp_b->prev = st_b;
+		tmp_b->next = st_b->next;
+		st_b->next->prev = tmp_b;
+		st_b->next = tmp_b;
 		write(1, "rrb\n", 4);
 	}
 }

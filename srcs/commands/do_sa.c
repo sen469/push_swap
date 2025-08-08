@@ -11,16 +11,23 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "struct.h"
 
 void	do_sa(t_node *st_a)
 {
-	t_node	tmp_a;
+	t_node	*first;
+	t_node	*second;
 
 	// 要素が2つ以上あることを確認
 	if (st_a->next != st_a->prev)
 	{
-
+		first = st_a->next;
+		second = first->next;
+		st_a->next = second;
+		first->next = second->next;
+		second->next->prev = first;
+		second->prev = st_a;
+		second->next = first;
+		first->prev = second;
 		write(1, "sa\n", 3);
 	}
 }

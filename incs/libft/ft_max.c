@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   do_pb.c                                            :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/06 18:34:37 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/06 23:55:07 by ssawa            ###   ########.fr       */
+/*   Created: 2025/08/07 10:56:24 by ssawa             #+#    #+#             */
+/*   Updated: 2025/08/07 10:57:13 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-void	do_pb(t_node *st_a, t_node *st_b)
+int	ft_min(int a, int b)
 {
-	t_node *tmp;
-
-	// st_bが空でないことを確認
-	if (st_a->next != st_a)
-	{
-		tmp = st_a->next;
-		st_a->next = tmp->next;
-		st_a->next->prev = st_a;
-		tmp->prev = st_b;
-		tmp->next = st_b->next;
-		st_b->next->prev = tmp;
-		st_b->next = tmp;
-		write(1, "pb\n", 3);
-	}
+	if (a < b)
+		return (a);
+	else
+		return (b);
 }

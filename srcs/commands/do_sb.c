@@ -14,8 +14,20 @@
 
 void	do_sb(t_node *st_b)
 {
-	if (!st_b)
+	t_node	*first;
+	t_node	*second;
+
+	// 要素が2つ以上あることを確認
+	if (st_b->next != st_b->prev)
 	{
+		first = st_b->next;
+		second = first->next;
+		st_b->next = second;
+		first->next = second->next;
+		second->next->prev = first;
+		second->prev = st_b;
+		second->next = first;
+		first->prev = second;
 		write(1, "sb\n", 3);
 	}
 }

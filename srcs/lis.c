@@ -45,7 +45,8 @@ static void	build_dp_table(t_vec *vec, t_lis_info *tmp)
 	i = 0;
 	while (i < vec->size)
 	{
-		idx = ft_lower_bound(tmp->dp, tmp->dp_size, vec->arr[i]) + 1;
+		// idx = ft_lower_bound(tmp->dp, tmp->dp_size, vec->arr[i]) + 1;
+		idx = ft_lower_bound(tmp->dp, tmp->dp_size, vec->arr[i]);
 		tmp->dp[idx] = vec->arr[i];
 		tmp->prev[i] = tmp->dp[idx - 1];
 		i++;
@@ -91,21 +92,23 @@ static void	restore_lis(t_lis_info *tmp, t_vec *vec)
 	}
 }
 
-t_vec	process_lis(t_vec *vec)
+void	process_lis(t_vec *vec, t_vec *lis)
 {
 	t_lis_info	tmp;
-	t_vec		lis;
+	// t_vec		lis;
 
-	lis.arr = NULL;
-	lis.size = 0;
+	lis->arr = NULL;
+	lis->size = 0;
 	if (init_lis(&tmp, vec->size))
-		return (lis);
+		return ;
+		// return (lis);
 	build_dp_table(vec, &tmp);
 	tmp.lis_len = get_lis_len(tmp.dp, &tmp.last);
-	lis.size = tmp.lis_len;
+	printf("lis.c tmp.lis_len = %d\n", tmp.lis_len);
+	lis->size = tmp.lis_len;
 	restore_lis(&tmp, vec);
-	lis.arr = tmp.lis;
+	lis->arr = tmp.lis;
 	free(tmp.prev);
 	free(tmp.dp);
-	return (lis);
+	// return (lis);
 }

@@ -18,20 +18,24 @@ int	main(int argc, char **argv)
 	t_vec		vec;
 	t_node	st_a;
 	t_node	st_b;
-	char	**str;
 
 	// 入力の引数が正しいかどうかをチェックする
 	// VALIDIDATE()
+	ft_putstr_fd("main ok\n", 2);
 	if (valid(argc, argv, &vec))
 	{
+		printf("error\n");
 		return (1);
 	}
 	// 連結リストを作成する
 	// INITIALIZE()
+	ft_putstr_fd("main ok\n", 2);
 	if (init(&vec, &st_a, &st_b))
 	{
 		return (1);
 	}
+	ft_putstr_fd("main ok\n", 2);
+	process(&vec);
 	// PROCESS()
 	// EXIT()
 

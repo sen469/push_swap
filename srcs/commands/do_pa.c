@@ -11,15 +11,14 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "struct.h"
 
 void	do_pa(t_node *st_a, t_node *st_b)
 {
 	t_node *tmp;
+
 	// st_bが空でないことを確認
 	if (st_b->next != st_b)
 	{
-
 		tmp = st_b->next;
 		st_b->next = tmp->next;
 		st_b->next->prev = st_b;
