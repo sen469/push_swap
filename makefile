@@ -53,6 +53,7 @@ SRC = \
 	srcs/commands/do_sa.c \
 	srcs/commands/do_sb.c \
 	srcs/commands/do_ss.c \
+	srcs/stack_size.c \
 
 OBJDIR  = objs
 OBJ     = $(SRC:%.c=$(OBJDIR)/%.o)

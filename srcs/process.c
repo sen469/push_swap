@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "libft/libft.h"
 #include "libft/libft.h"
 #include "push_swap.h"
 #include "struct.h"
@@ -31,24 +30,24 @@ void	make_stack_b(t_node *st_a, t_node *st_b, t_vec *lis)
 
 void	cost_of_top_b(t_node *st_b)
 {
-	int	cst_r;
+	int	cost_r;
 	int	st_size_b;
-	int	st_size_a;
 	t_node	*tmp;
 
 	st_size_b = stack_size(st_b);
 	tmp = st_b->next;
+	cost_r = 0;
 	while (tmp != st_b)
 	{
-		if (cst_r < st_size_b - cst_r)
+		if (cost_r < st_size_b - cost_r)
 		{
-			tmp->command.rb = cst_r;
+			tmp->command.rb = cost_r;
 		}
 		else
 		{
-			tmp->command.rrb = st_size_b - cst_r;
+			tmp->command.rrb = st_size_b - cost_r;
 		}
-		cst_r++;
+		cost_r++;
 		tmp = tmp->next;
 	}
 }
@@ -56,23 +55,97 @@ void	cost_of_top_b(t_node *st_b)
 t_node *min_cost(t_node *st)
 {
 	t_node	*tmp;
+	t_command	cmd;
+	int			mn;
+	t_node	*ret;
 
+	mn = INT_MAX;
 	tmp = st->next;
+	ret = NULL;
+	while (tmp != st)
+	{
+		cmd = tmp->command;
+		cmd.all = cmd.ra + cmd.rb + cmd.rr + cmd.rra + cmd.rrb + cmd.rrr;
+		if (cmd.all < mn)
+		{
+			mn = cmd.all;
+			ret = tmp;
+		}
+		tmp = tmp->next;
+	}
+	return (ret);
 }
 
-void	process(t_node *st_a, t_node *st_b, t_vec *vec)
+// スタックAの正しい場所に入れるまでに必要な手数を計算する関数
+void	cost_of_b2a(t_node *st_a, t_node *st_b)
+{
+	int	st_size_a;
+	int	cost_r;
+	t_node	*tmp_a;
+	t_node	*tmp_b;
+
+	st_size_a = stack_size(st_a);
+	tmp_b = st_b->next;
+	cost_r = 0;
+	while (tmp_b != st_b)
+	{
+		tmp_a = st_a->next;
+		while (tmp_a != st_a)
+		{
+			if (tmp_a->prev->index < tmp_b->index && tmp_b->index < tmp_a->index)
+			{
+				if (cost_r < st_size_a - cost_r)
+				{
+					tmp_b->command.ra = cost_r;
+				}
+				else
+				{
+					tmp_b->command.rra = st_size_a - cost_r;
+				}
+			}
+			tmp_a = tmp_a->next;
+		}
+		cost_r++;
+		tmp_b = tmp_b->next;
+	}
+}
+
+void	init_node_command(t_node *st)
+{
+	t_node	*tmp;
+
+	tmp = st->next;
+	while (tmp->next != st)
+	{
+		tmp->command.rra = 0;
+		tmp->command.ra = 0;
+		tmp->command.rrb = 0;
+		tmp->command.rb = 0;
+		tmp->command.rr = 0;
+		tmp->command.rrr = 0;
+		tmp->command.all = 0;
+		tmp = tmp->next;
+	}
+}
+
+void	process(t_vec *vec, t_node *st_a, t_node *st_b)
 {
 	t_vec	lis;
+	t_node	*min_cost_node;
 
 	process_lis(vec, &lis);
 	make_stack_b(st_a, st_b, &lis);
-	// cost_of_top(st_b);
-	/*
-	write(1, "process\n", 9);
-	printf("lis.size = %d\n", lis.size);
-	for (int i = 0; i < lis.size; i++)
+	// スタックBの各ノードがtopとなるコストを求める
+	// スタックBをの各ノードがスタックAの正しいノードに移動するまでのコストを求める
+	// 最小コストとなるノードを求める
+	// そのノードを移動する
+	// これをスタックBが空になるまで実行する
+	while (st_b->next != st_b->prev)
 	{
-		printf("%d\n", lis.arr[i]);
+		cost_of_top_b(st_b);
+		cost_of_b2a(st_a, st_b);
+		min_cost_node = min_cost(st_b);
+		do_command(min_cost_node, st_a, st_b);
+		init_node_command(st_b);
 	}
-	*/
 }

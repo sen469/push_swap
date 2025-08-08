@@ -72,6 +72,7 @@ int	init(t_vec *vec, t_node *st_a, t_node *st_b)
 	st_b->prev = st_b;
 	st_b->next = st_b;
 	// ft_putstr_fd("init.c ok\n", 2);
+	i = 0;
 	while (i < vec->size)
 	{
 		new_node = create_new_node(vec->arr[i]);

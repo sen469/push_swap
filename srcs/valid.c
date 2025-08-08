@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:50:21 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/04 17:18:35 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/08 17:52:04 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	check_str_is_num(const char *str)
 	{
 		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]))
 		{
-			printf("str_is_num valid=%c=\n", str[i]);
+			// printf("str_is_num valid=%c=\n", str[i]);
 			return (-1);
 		}
 		i++;
@@ -42,7 +42,7 @@ static int	arg2_check(char *str)
 	{
 		if (str[i] != ' ' && !ft_isdigit(str[i]))
 		{
-			printf("valid error\n");
+			// printf("valid error\n");
 			return (arg_error());
 		}
 		i++;

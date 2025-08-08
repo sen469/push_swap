@@ -51,6 +51,7 @@ MY_SRCS =	ft_binary_search.c \
 			ft_min.c \
 			ft_max.c \
 			ft_strcmp.c \
+			ft_atol.c \
 
 OBJS = $(SRCS:.c=.o)
 BOBJS = $(BSRCS:.c=.o)

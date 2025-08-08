@@ -44,7 +44,7 @@ void	do_sa(t_node *st_a);
 void	do_sb(t_node *st_b);
 void	do_ss(t_node *st_a, t_node *st_b);
 void	do_command(t_node *node, t_node *st_a, t_node *st_b);
-void	process(t_node *st_a, t_node *st_b, t_vec *vec);
+void	process(t_vec *vec, t_node *st_a, t_node *st_b);
 int		stack_size(t_node *st);
 
 #endif

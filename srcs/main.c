@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_putstr_fd("main ok\n", 2);
-	process(&vec);
+	process(&vec, &st_a, &st_b);
 	// PROCESS()
 	// EXIT()
 

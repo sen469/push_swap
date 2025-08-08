@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 23:07:55 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/07 10:57:59 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/08 17:47:43 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int		ft_lower_bound(int *vec, int size, int key);
 int		ft_upper_bound(int *vec, int size, int key);
 int		ft_min(int a, int b);
 int		ft_max(int a, int b);
+long	ft_atol(const char *str);
 
 #endif

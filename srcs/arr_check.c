@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:35:13 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/04 18:15:02 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/08 17:54:06 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ int	*make_arr(int argc, char **argv, int *size)
 	i = 0;
 	while (str_arr[i])
 	{
+		if (INT_MAX < ft_atol(str_arr[i]))
+		{
+			// str_arr をフリーする
+			arg_error();
+		}
 		int_arr[i] = ft_atoi(str_arr[i]);
 		i++;
 	}
