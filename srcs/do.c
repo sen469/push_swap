@@ -15,18 +15,18 @@
 
 static void	do_all(t_command *tmp, t_node *st_a, t_node *st_b)
 {
-	while (tmp->ra-- > 0)
-		do_ra(st_a);
-	while (tmp->rb-- > 0)
-		do_rb(st_b);
-	while (tmp->rr-- > 0)
+	while (tmp->rr--)
 		do_rr(st_a, st_b);
-	while (tmp->rra-- > 0)
-		do_rra(st_a);
-	while (tmp->rrb-- > 0)
-		do_rrb(st_b);
-	while (tmp->rrr-- > 0)
+	while (tmp->rrr--)
 		do_rrr(st_a, st_b);
+	while (tmp->ra--)
+		do_ra(st_a);
+	while (tmp->rb--)
+		do_rb(st_b);
+	while (tmp->rra--)
+		do_rra(st_a);
+	while (tmp->rrb--)
+		do_rrb(st_b);
 }
 
 void	do_command(t_node *node, t_node *st_a, t_node *st_b)

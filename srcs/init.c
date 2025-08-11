@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:22:42 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/06 22:49:42 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/11 23:09:37 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,13 @@ int	*ft_bubble_sort(int *arr, int size)
 	int	i;
 	int	j;
 
-	// ft_putstr_fd("init.c ok\n", 2);
 	res = (int *)malloc(size * sizeof(int));
 	if (!res)
-	{
-		// write(1, "error\n", 6);
 		return (NULL);
-	}
-	// ft_putstr_fd("init.c ok\n", 2);
 	i = -1;
-	// printf("size = %d\n", size);
 	while (++i < size)
-	{
 		res[i] = arr[i];
-		// write(1, "count\n", 6);
-	}
 	i = size;
-	// ft_putstr_fd("init.c ok\n", 2);
 	while (--i >= 0)
 	{
 		j = -1;
@@ -50,28 +40,19 @@ int	*ft_bubble_sort(int *arr, int size)
 				res[j] ^= res[j + 1];
 			}
 		}
-		// ft_putnbr_fd(i, 2);
-		// write(2, "\n", 1);
 	}
 	return (res);
 }
 
-int	init(t_vec *vec, t_node *st_a, t_node *st_b)
+int	init(t_vec *vec, t_node *st_a)
 {
 	int		i;
 	int		*sorted_vec;
 	t_node	*new_node;
 
-	// ft_putstr_fd("init.c ok\n", 2);
 	sorted_vec = ft_bubble_sort(vec->arr, vec->size);
 	if (!sorted_vec)
 		return (-1);
-	// ft_putstr_fd("init.c ok\n", 2);
-	st_a = (t_node *)malloc(sizeof(t_node));
-	st_b = (t_node *)malloc(sizeof(t_node));
-	st_b->prev = st_b;
-	st_b->next = st_b;
-	// ft_putstr_fd("init.c ok\n", 2);
 	i = 0;
 	while (i < vec->size)
 	{
@@ -83,6 +64,9 @@ int	init(t_vec *vec, t_node *st_a, t_node *st_b)
 		add_node_back(st_a, new_node);
 		i++;
 	}
-	// ft_putstr_fd("init.c ok\n", 2);
+	free_arr(sorted_vec);
+	t_node *tmp = st_a->next;
+	while (tmp != st_a)
+		tmp = tmp->next;
 	return (0);
 }

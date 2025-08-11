@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:48:11 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/08 11:46:15 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/11 23:08:31 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int		valid(int argc, char **str, t_vec *vec);
 void	node_free(t_node **node);
 int		*make_arr(int argc, char **argv, int *size);
 int		check_arr(int *arr, int size);
-void	free_char2(char **str);
-int		init(t_vec *vec, t_node *st_a, t_node *st_b);
-void	free_lis(int *vec);
+void	free_char_deg2(char **str);
+int		init(t_vec *vec, t_node *st_a);
+void	free_arr(int *vec);
 void	process_lis(t_vec *vec, t_vec *lis);
 void	add_node_back(t_node *st, t_node *new_node);
 void	add_node_front(t_node *st, t_node *new_node);
@@ -46,5 +46,9 @@ void	do_ss(t_node *st_a, t_node *st_b);
 void	do_command(t_node *node, t_node *st_a, t_node *st_b);
 void	process(t_vec *vec, t_node *st_a, t_node *st_b);
 int		stack_size(t_node *st);
+void	sum_cost(t_node *tmp);
+void	free_stack(t_node *st);
+void	free_all(int *arr, t_node *st_a, t_node *st_b);
+void	arg_error_exit(void);
 
 #endif

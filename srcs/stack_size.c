@@ -25,5 +25,5 @@ int	stack_size(t_node *st)
 		i++;
 		tmp = tmp->next;
 	}
-	return (i + 1);
+	return (i);
 }

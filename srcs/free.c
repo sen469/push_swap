@@ -13,22 +13,24 @@
 #include "push_swap.h"
 #include "struct.h"
 
-void	node_free(t_node **node)
+void	free_stack(t_node *st)
 {
-	t_node *nxt;
+	t_node	*tmp;
+	t_node	*next;
 
-	if (*node)
+	if (!st)
+		return ;
+	tmp = st->next;
+	while (tmp != st)
 	{
-		while (*node)
-		{
-			nxt = (*node)->next;
-			free(*node);
-			*node = nxt;
-		}
+		next = tmp->next;
+		free(tmp);
+		tmp = next;
 	}
+	free(st);
 }
 
-void	free_char2(char **str)
+void	free_char_deg2(char **str)
 {
 	int	i;
 
@@ -42,11 +44,18 @@ void	free_char2(char **str)
 	free(str);
 }
 
-void	free_lis(int *vec)
+void	free_arr(int *vec)
 {
-	if (!vec)
+	if (vec)
 	{
 		free(vec);
 		vec = NULL;
 	}
+}
+
+void	free_all(int *arr, t_node *st_a, t_node *st_b)
+{
+	free_arr(arr);
+	free_stack(st_a);
+	free_stack(st_b);
 }

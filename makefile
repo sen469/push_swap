@@ -6,7 +6,7 @@
 #    By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 15:40:47 by ssawa             #+#    #+#              #
-#    Updated: 2025/08/08 11:46:41 by ssawa            ###   ########.fr        #
+#    Updated: 2025/08/11 23:10:23 by ssawa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ LIBFT_DIR   = ./incs/libft
 ########################################
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+# CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra
 INCLUDES    = -I./incs -I$(LIBFT_DIR)
 
 ########################################
@@ -32,7 +33,7 @@ INCLUDES    = -I./incs -I$(LIBFT_DIR)
 ########################################
 
 SRC = \
-	srcs/arr_check.c \
+	srcs/argv2arr.c \
 	srcs/do.c \
 	srcs/error_message.c \
 	srcs/free.c \
@@ -54,6 +55,7 @@ SRC = \
 	srcs/commands/do_sb.c \
 	srcs/commands/do_ss.c \
 	srcs/stack_size.c \
+	srcs/command.c \
 
 OBJDIR  = objs
 OBJ     = $(SRC:%.c=$(OBJDIR)/%.o)

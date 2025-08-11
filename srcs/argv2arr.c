@@ -1,17 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arr_check.c                                        :+:      :+:    :+:   */
+/*   argv2arr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 15:35:13 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/08 17:54:06 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/11 23:06:00 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
+#include <limits.h>
+#include <stdlib.h>
 
 int	arr_size(char **str)
 {
@@ -25,36 +27,43 @@ int	arr_size(char **str)
 	return (i);
 }
 
+static void _free(char **str, int *arr)
+{
+	free_char_deg2(str);
+	free_arr(arr);
+}
+
 // ダブりチェック
 int	*make_arr(int argc, char **argv, int *size)
 {
 	char	**str_arr;
-	int	*int_arr;
+	int		*int_arr;
 	int		i;
+	long	tmp;
 
 	if (argc == 2)
 		str_arr = ft_split(argv[1], ' ');
 	else
 		str_arr = &argv[1];
-	// arr_size関数がおかしい
-	// 文字列の個数を数える関数
+	if (!str_arr)
+		exit(EXIT_FAILURE);
 	*size = arr_size(str_arr);
-	// printf("arr_checks.c size = %d\n", *size);
 	int_arr = ft_calloc(*size, sizeof(int));
 	i = 0;
 	while (str_arr[i])
 	{
-		if (INT_MAX < ft_atol(str_arr[i]))
+		tmp = ft_atol(str_arr[i]);
+		if (INT_MAX < tmp || INT_MIN > tmp)
 		{
-			// str_arr をフリーする
-			arg_error();
+			_free(str_arr, int_arr);
+			arg_error_exit();
 		}
 		int_arr[i] = ft_atoi(str_arr[i]);
 		i++;
 	}
 	if (argc == 2)
 	{
-		free_char2(str_arr);
+		free_char_deg2(str_arr);
 	}
 	return (int_arr);
 }
@@ -72,7 +81,8 @@ int	check_arr(int *arr, int size)
 		{
 			if (arr[i] == arr[j])
 			{
-				return (-1);
+				free_arr(arr);
+				exit(EXIT_FAILURE);
 			}
 			j++;
 		}

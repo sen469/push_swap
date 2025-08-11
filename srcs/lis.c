@@ -104,7 +104,7 @@ void	process_lis(t_vec *vec, t_vec *lis)
 		// return (lis);
 	build_dp_table(vec, &tmp);
 	tmp.lis_len = get_lis_len(tmp.dp, &tmp.last);
-	printf("lis.c tmp.lis_len = %d\n", tmp.lis_len);
+	// printf("lis.c tmp.lis_len = %d\n", tmp.lis_len);
 	lis->size = tmp.lis_len;
 	restore_lis(&tmp, vec);
 	lis->arr = tmp.lis;
