@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 22:36:26 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/06 22:41:23 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/15 19:55:56 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_node	*create_new_node(int data)
 		return (NULL);
 	new_node->data = data;
 	new_node->index = 0;
-	new_node->command.all= 0;
+	new_node->command.all = 0;
 	new_node->command.ra = 0;
 	new_node->command.rra = 0;
 	new_node->command.rb = 0;
