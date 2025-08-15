@@ -6,14 +6,13 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 17:22:42 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/11 23:09:37 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/15 19:17:14 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "push_swap.h"
 #include "struct.h"
-
 
 int	*ft_bubble_sort(int *arr, int size)
 {
@@ -64,9 +63,6 @@ int	init(t_vec *vec, t_node *st_a)
 		add_node_back(st_a, new_node);
 		i++;
 	}
-	free_arr(sorted_vec);
-	t_node *tmp = st_a->next;
-	while (tmp != st_a)
-		tmp = tmp->next;
+	free_arr(&sorted_vec);
 	return (0);
 }

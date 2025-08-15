@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 16:50:21 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/11 22:49:20 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/15 19:16:34 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	check_str_is_num(const char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]))
+		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]) && str[i] != '-')
 		{
 			return (-1);
 		}
@@ -39,9 +39,9 @@ static int	arg2_check(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (!ft_isspace(str[i]) && !ft_isdigit(str[i]))
+		if (!ft_isspace(str[i]) && !ft_isdigit(str[i]) && str[i] != '-')
 		{
-			return (arg_error());
+			return (-1);
 		}
 		i++;
 	}
@@ -68,20 +68,14 @@ static int	args_check(int argc, char **argv)
 
 int	valid(int argc, char **argv, t_vec *vec)
 {
-	// int	i;
-
-	// i = 0;
-	// 引数の個数チェック
 	if (argc == 1)
 	{
 		exit(EXIT_SUCCESS);
 	}
-	// 引数が2つの時
 	else if (argc == 2 && arg2_check(argv[1]))
 	{
 		return (-1);
 	}
-	// 2以上の時
 	else if (args_check(argc, argv))
 	{
 		return (-1);
