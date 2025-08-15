@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:48:11 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/11 23:08:31 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/15 19:56:56 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int		*make_arr(int argc, char **argv, int *size);
 int		check_arr(int *arr, int size);
 void	free_char_deg2(char **str);
 int		init(t_vec *vec, t_node *st_a);
-void	free_arr(int *vec);
+void	free_arr(int **vec);
 void	process_lis(t_vec *vec, t_vec *lis);
 void	add_node_back(t_node *st, t_node *new_node);
 void	add_node_front(t_node *st, t_node *new_node);
@@ -45,10 +45,17 @@ void	do_sb(t_node *st_b);
 void	do_ss(t_node *st_a, t_node *st_b);
 void	do_command(t_node *node, t_node *st_a, t_node *st_b);
 void	process(t_vec *vec, t_node *st_a, t_node *st_b);
-int		stack_size(t_node *st);
+int		get_stack_size(t_node *st);
 void	sum_cost(t_node *tmp);
-void	free_stack(t_node *st);
+void	free_stack(t_node **st);
 void	free_all(int *arr, t_node *st_a, t_node *st_b);
-void	arg_error_exit(void);
+void	error_exit(void);
+void	process_sub(int size, t_node *st_a, t_node *st_b);
+void	move_target_to_top(t_node *st_a, int target_index);
+void	init_node_command(t_node *st);
+void	make_stack_b(t_node *st_a, t_node *st_b, t_vec *lis);
+void	cost_of_top_b(t_node *st_b);
+t_node	*chose_min_cost(t_node *st);
+int		get_min_index(t_node *st);
 
 #endif

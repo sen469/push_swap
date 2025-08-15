@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:34:27 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/06 18:58:57 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/15 18:58:54 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct s_command
 	int	rrb;
 	int	rr;
 	int	rrr;
-} t_command;
+}	t_command;
 
 typedef struct s_node
 {

@@ -6,7 +6,7 @@
 #    By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 15:40:47 by ssawa             #+#    #+#              #
-#    Updated: 2025/08/11 23:10:23 by ssawa            ###   ########.fr        #
+#    Updated: 2025/08/15 19:38:11 by ssawa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRC = \
 	srcs/main.c \
 	srcs/node_operation.c \
 	srcs/process.c \
+	srcs/process_sub.c \
 	srcs/valid.c \
 	srcs/commands/do_pa.c \
 	srcs/commands/do_pb.c \
@@ -56,6 +57,9 @@ SRC = \
 	srcs/commands/do_ss.c \
 	srcs/stack_size.c \
 	srcs/command.c \
+	srcs/utils.c \
+	srcs/few_arguments.c \
+
 
 OBJDIR  = objs
 OBJ     = $(SRC:%.c=$(OBJDIR)/%.o)

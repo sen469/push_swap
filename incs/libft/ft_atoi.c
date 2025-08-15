@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "limits.h"
+#include "libft.h"
+
 int	ft_atoi(const char *str)
 {
 	long	num;
