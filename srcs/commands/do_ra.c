@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 18:34:40 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/06 19:01:10 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/15 19:14:47 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	do_ra(t_node *st_a)
 {
 	t_node	*tmp_a;
 
-	if  (st_a->next != st_a->prev)
+	if (st_a->next != st_a->prev)
 	{
 		tmp_a = st_a->next;
 		st_a->next = tmp_a->next;
