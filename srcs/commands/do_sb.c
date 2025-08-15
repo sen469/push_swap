@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 18:35:03 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/06 18:35:45 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/15 19:07:10 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	do_sb(t_node *st_b)
 	t_node	*first;
 	t_node	*second;
 
-	// 要素が2つ以上あることを確認
 	if (st_b->next != st_b->prev)
 	{
 		first = st_b->next;

@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 18:34:37 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/06 23:55:07 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/15 19:09:16 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	do_pb(t_node *st_a, t_node *st_b)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
-	// st_bが空でないことを確認
 	if (st_a->next != st_a)
 	{
 		tmp = st_a->next;
