@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:36:04 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/15 19:36:51 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/16 16:10:30 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,24 @@ static void	sort_three_nodes(t_node *st_a, t_node *first, t_node *second,
 {
 	if (first->index > second->index && second->index < third->index
 		&& first->index < third->index)
-		do_sa(st_a);
+		do_sa(st_a, 1);
 	else if (first->index > second->index && second->index > third->index)
 	{
-		do_sa(st_a);
-		do_rra(st_a);
+		do_sa(st_a, 1);
+		do_rra(st_a, 1);
 	}
 	else if (first->index > second->index && second->index < third->index
 		&& first->index > third->index)
-		do_ra(st_a);
+		do_ra(st_a, 1);
 	else if (first->index < second->index && second->index > third->index
 		&& first->index < third->index)
 	{
-		do_sa(st_a);
-		do_ra(st_a);
+		do_sa(st_a, 1);
+		do_ra(st_a, 1);
 	}
 	else if (first->index < second->index && second->index > third->index
 		&& first->index > third->index)
-		do_rra(st_a);
+		do_rra(st_a, 1);
 }
 
 static void	process_3(t_node *st_a)
@@ -52,20 +52,20 @@ static void	process_3(t_node *st_a)
 static void	process_4(t_node *st_a, t_node *st_b)
 {
 	move_target_to_top(st_a, 0);
-	do_pb(st_a, st_b);
+	do_pb(st_a, st_b, 1);
 	process_3(st_a);
-	do_pa(st_a, st_b);
+	do_pa(st_a, st_b, 1);
 }
 
 static void	process_5(t_node *st_a, t_node *st_b)
 {
 	move_target_to_top(st_a, 0);
-	do_pb(st_a, st_b);
+	do_pb(st_a, st_b, 1);
 	move_target_to_top(st_a, 1);
-	do_pb(st_a, st_b);
+	do_pb(st_a, st_b, 1);
 	process_3(st_a);
-	do_pa(st_a, st_b);
-	do_pa(st_a, st_b);
+	do_pa(st_a, st_b, 1);
+	do_pa(st_a, st_b, 1);
 }
 
 void	process_sub(int size, t_node *st_a, t_node *st_b)
@@ -75,7 +75,7 @@ void	process_sub(int size, t_node *st_a, t_node *st_b)
 	else if (size == 2)
 	{
 		if (st_a->next->index > st_a->next->next->index)
-			do_sa(st_a);
+			do_sa(st_a, 1);
 	}
 	else if (size == 3)
 		process_3(st_a);

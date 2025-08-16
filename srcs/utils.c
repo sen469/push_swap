@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 19:37:22 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/15 19:39:46 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/16 16:11:14 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	move_target_to_top(t_node *st_a, int target_index)
 	if (pos <= size / 2)
 	{
 		while (pos-- > 0)
-			do_ra(st_a);
+			do_ra(st_a, 1);
 	}
 	else
 	{
 		while (pos++ < size)
-			do_rra(st_a);
+			do_rra(st_a, 1);
 	}
 }

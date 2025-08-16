@@ -30,8 +30,6 @@ static int	check_str_is_num(const char *str)
 	return (0);
 }
 
-// ac == 2のときの文字列チェック
-// ""で数字の集合が1つの文字列になっているとき
 static int	arg2_check(char *str)
 {
 	int	i;
@@ -48,8 +46,6 @@ static int	arg2_check(char *str)
 	return (0);
 }
 
-// ac >=3 の時のチェック
-// 数字の文字列の集合が渡されたとき
 static int	args_check(int argc, char **argv)
 {
 	int	i;

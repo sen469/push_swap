@@ -105,35 +105,6 @@ static void	restore_lis(t_lis_info *tmp, t_vec *vec)
 	}
 }
 
-/*
-void	process_lis(t_vec *vec, t_vec *lis)
-{
-	t_lis_info	tmp;
-	// t_vec		lis;
-
-	lis->arr = NULL;
-	lis->size = 0;
-	if (init_lis(&tmp, vec->size))
-		return ;
-		// return (lis);
-	build_dp_table(vec, &tmp);
-	printf("105 lis.c\n");
-	tmp.lis_len = get_lis_len(tmp.dp, &tmp.last);
-	// printf("lis.c tmp.lis_len = %d\n", tmp.lis_len);
-	printf("105 lis.c\n");
-	lis->size = tmp.lis_len;
-	printf("105 lis.c\n");
-	restore_lis(&tmp, vec);
-	printf("105 lis.c\n");
-	lis->arr = tmp.lis;
-	printf("105 lis.c\n");
-	free(tmp.prev);
-	free(tmp.dp);
-	// return (lis);
-}
-*/
-
-// 関数のシグネチャに dp_size を追加
 static int	get_lis_len(int *dp, int *last, int dp_size)
 {
 	int	i;

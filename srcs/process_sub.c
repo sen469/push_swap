@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 17:54:51 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/15 19:57:10 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/16 16:11:03 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	init_node_command(t_node *st)
 	}
 }
 
-// スタックAのLIS以外の要素をスタックBに移す関数
 void	make_stack_b(t_node *st_a, t_node *st_b, t_vec *lis)
 {
 	int	st_a_size;
@@ -42,18 +41,16 @@ void	make_stack_b(t_node *st_a, t_node *st_b, t_vec *lis)
 	{
 		if (!ft_binary_search(lis->arr, lis->size, st_a->next->data))
 		{
-			do_pb(st_a, st_b);
+			do_pb(st_a, st_b, 1);
 		}
 		else
 		{
-			do_ra(st_a);
+			do_ra(st_a, 1);
 		}
 		i++;
 	}
 }
 
-// スタックBの各ノードが一番上にするにはどのくらいコストがかかるのか
-// という関数
 void	cost_of_top_b(t_node *st_b)
 {
 	int		cost_r;
@@ -72,7 +69,6 @@ void	cost_of_top_b(t_node *st_b)
 	}
 }
 
-// スタックBから最小コストとなるノードはどれかを選ぶ関数
 t_node	*chose_min_cost(t_node *st)
 {
 	t_node		*tmp;
@@ -97,7 +93,6 @@ t_node	*chose_min_cost(t_node *st)
 	return (ret);
 }
 
-// スタックAの最少インデックスは上から何番目かを調べる関数
 int	get_min_index(t_node *st)
 {
 	t_node	*tmp;
