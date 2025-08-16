@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/15 22:16:04 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/16 16:22:14 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/16 16:35:05 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,18 @@ int	is_sorted_and_b_empty(t_node *st_a, t_node *st_b)
 	return (1);
 }
 
-static void	print_result(t_node *st_a, t_node *st_b)
+static int	print_result(t_node *st_a, t_node *st_b)
 {
 	if (is_sorted_and_b_empty(st_a, st_b))
+	{
 		write(1, "OK\n", 3);
+		return (1);
+	}
 	else
+	{
 		write(1, "KO\n", 3);
+		return (0);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -78,6 +84,12 @@ int	main(int argc, char **argv)
 	if (valid(argc, argv, &vec))
 		error_exit();
 	init_stacks(&st_a, &st_b);
+	if (print_result(st_a, st_b))
+	{
+		free_stack(&st_a);
+		free_stack(&st_b);
+		return (0);
+	}
 	init(&vec, st_a);
 	free(vec.arr);
 	gnl_and_do_command(st_a, st_b);
