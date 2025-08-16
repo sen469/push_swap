@@ -6,13 +6,13 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 18:34:40 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/15 19:14:47 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/16 16:08:11 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_ra(t_node *st_a)
+void	do_ra(t_node *st_a, int flag)
 {
 	t_node	*tmp_a;
 
@@ -25,6 +25,7 @@ void	do_ra(t_node *st_a)
 		tmp_a->prev = st_a->prev;
 		st_a->prev->next = tmp_a;
 		st_a->prev = tmp_a;
-		write(1, "ra\n", 3);
+		if (flag)
+			write(1, "ra\n", 3);
 	}
 }

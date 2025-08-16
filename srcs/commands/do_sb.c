@@ -6,13 +6,13 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 18:35:03 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/15 19:07:10 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/16 16:08:59 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	do_sb(t_node *st_b)
+void	do_sb(t_node *st_b, int flag)
 {
 	t_node	*first;
 	t_node	*second;
@@ -27,6 +27,7 @@ void	do_sb(t_node *st_b)
 		second->prev = st_b;
 		second->next = first;
 		first->prev = second;
-		write(1, "sb\n", 3);
+		if (flag)
+			write(1, "sb\n", 3);
 	}
 }
