@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 18:14:52 by ssawa             #+#    #+#             */
-/*   Updated: 2025/05/15 14:30:20 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/16 15:52:01 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,11 @@ char	*get_next_line(int fd)
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	{
+		if (buffer)
+			free(buffer);
 		return (NULL);
+	}
 	buffer = read_file(fd, buffer);
 	if (!buffer)
 		return (NULL);

@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 15:48:11 by ssawa             #+#    #+#             */
-/*   Updated: 2025/08/15 19:56:56 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/08/16 16:06:46 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ void	process_lis(t_vec *vec, t_vec *lis);
 void	add_node_back(t_node *st, t_node *new_node);
 void	add_node_front(t_node *st, t_node *new_node);
 t_node	*create_new_node(int data);
-void	do_pa(t_node *st_a, t_node *st_b);
-void	do_pb(t_node *st_a, t_node *st_b);
-void	do_ra(t_node *st_a);
-void	do_rb(t_node *st_b);
-void	do_rr(t_node *st_a, t_node *st_b);
-void	do_rra(t_node *st_a);
-void	do_rrb(t_node *st_b);
-void	do_rrr(t_node *st_a, t_node *st_b);
-void	do_sa(t_node *st_a);
-void	do_sb(t_node *st_b);
-void	do_ss(t_node *st_a, t_node *st_b);
+void	do_pa(t_node *st_a, t_node *st_b, int flag);
+void	do_pb(t_node *st_a, t_node *st_b, int flag);
+void	do_ra(t_node *st_a, int flag);
+void	do_rb(t_node *st_b, int flag);
+void	do_rr(t_node *st_a, t_node *st_b, int flag);
+void	do_rra(t_node *st_a, int flag);
+void	do_rrb(t_node *st_b, int flag);
+void	do_rrr(t_node *st_a, t_node *st_b, int flag);
+void	do_sa(t_node *st_a, int flag);
+void	do_sb(t_node *st_b, int flag);
+void	do_ss(t_node *st_a, t_node *st_b, int flag);
 void	do_command(t_node *node, t_node *st_a, t_node *st_b);
 void	process(t_vec *vec, t_node *st_a, t_node *st_b);
 int		get_stack_size(t_node *st);
