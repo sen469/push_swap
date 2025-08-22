@@ -57,5 +57,6 @@ void	make_stack_b(t_node *st_a, t_node *st_b, t_vec *lis);
 void	cost_of_top_b(t_node *st_b);
 t_node	*chose_min_cost(t_node *st);
 int		get_min_index(t_node *st);
+int		is_sorted(t_node *st_a);
 
 #endif

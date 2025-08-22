@@ -39,3 +39,19 @@ void	move_target_to_top(t_node *st_a, int target_index)
 			do_rra(st_a, 1);
 	}
 }
+
+int	is_sorted(t_node *st_a)
+{
+	t_node	*tmp;
+
+	if (get_stack_size(st_a) <= 1)
+		return (1);
+	tmp = st_a->next;
+	while (tmp->next != st_a)
+	{
+		if (tmp->data > tmp->next->data)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}

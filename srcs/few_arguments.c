@@ -70,6 +70,8 @@ static void	process_5(t_node *st_a, t_node *st_b)
 
 void	process_sub(int size, t_node *st_a, t_node *st_b)
 {
+	if (is_sorted(st_a))
+		return ;
 	if (size <= 1)
 		return ;
 	else if (size == 2)

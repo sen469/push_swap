@@ -2,3 +2,4 @@ compile_flags.txt
 *.o
 push_swap_tester/
 checker
+memo
