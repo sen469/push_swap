@@ -57,7 +57,7 @@ OBJS = $(SRCS:.c=.o)
 BOBJS = $(BSRCS:.c=.o)
 MY_OBJS = $(MY_SRCS:.c=.o)
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f

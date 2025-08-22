@@ -17,17 +17,27 @@
 static int	check_str_is_num(const char *str)
 {
 	int	i;
+	int	flag;
 
 	i = 0;
-	while (str[i])
+	flag = 1;
+	while (str[i] && ft_isspace(str[i]))
+		i++;
+	while (str[i] && (str[i] == '-' || str[i] == '+'))
+		i++;
+	while (str[i] && ft_isdigit(str[i]))
 	{
-		if (!ft_isdigit(str[i]) && !ft_isspace(str[i]) && str[i] != '-')
-		{
-			return (-1);
-		}
+		flag = 0;
 		i++;
 	}
-	return (0);
+	while (str[i] && ft_isspace(str[i]))
+		i++;
+	if (flag)
+		return (1);
+	else if (str[i] == '\0')
+		return (0);
+	else
+		return (1);
 }
 
 static int	arg2_check(char *str)

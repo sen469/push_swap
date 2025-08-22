@@ -48,7 +48,9 @@ int	is_sorted_and_b_empty(t_node *st_a, t_node *st_b)
 	if (get_stack_size(st_b) != 0)
 		return (0);
 	if (get_stack_size(st_a) <= 1)
+	{
 		return (1);
+	}
 	tmp = st_a->next;
 	while (tmp->next != st_a)
 	{
@@ -84,14 +86,15 @@ int	main(int argc, char **argv)
 	if (valid(argc, argv, &vec))
 		error_exit();
 	init_stacks(&st_a, &st_b);
-	if (print_result(st_a, st_b))
+	init(&vec, st_a);
+	free(vec.arr);
+	if (is_sorted_and_b_empty(st_a, st_b))
 	{
+		write(1, "OK\n", 3);
 		free_stack(&st_a);
 		free_stack(&st_b);
 		return (0);
 	}
-	init(&vec, st_a);
-	free(vec.arr);
 	gnl_and_do_command(st_a, st_b);
 	print_result(st_a, st_b);
 	free_stack(&st_a);

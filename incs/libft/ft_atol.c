@@ -41,7 +41,7 @@ long	ft_atol(const char *str)
 	sign = 1;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))
 		str++;
-	if (*str == '-' || *str == '+')
+	while (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
 			sign = -1;

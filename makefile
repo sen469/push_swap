@@ -6,7 +6,7 @@
 #    By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/05 15:40:47 by ssawa             #+#    #+#              #
-#    Updated: 2025/08/16 16:29:37 by ssawa            ###   ########.fr        #
+#    Updated: 2025/08/22 16:38:56 by ssawa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ LIBFT_DIR   = ./incs/libft
 ########################################
 
 CC          = cc
-# CFLAGS      = -Wall -Wextra -Werror
-CFLAGS      = -Wall -Wextra
+CFLAGS      = -Wall -Wextra -Werror
+# CFLAGS      = -Wall -Wextra
 INCLUDES    = -I./incs -I$(LIBFT_DIR)
 
 ########################################
@@ -82,11 +82,19 @@ BSRCS = \
 	srcs/valid.c \
 	srcs/argv2arr.c \
 	srcs/stack_size.c \
+	srcs/utils.c \
 
 
 OBJDIR   = objs
 OBJ      = $(SRC:%.c=$(OBJDIR)/%.o)
 BOBJ     = $(BSRCS:%.c=$(OBJDIR)/%.o)
+
+MKDIR = mkdir -p
+
+RM = rm -f
+RM_DIR = rm -rf
+
+MAKEFLAGS += --no-print-directory
 
 ########################################
 #               Rules                  #
@@ -100,25 +108,55 @@ $(NAME): $(LIBFT) $(OBJ)
 $(BONUS_NAME): $(LIBFT) $(BOBJ)
 	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BOBJ) $(LIBFT)
 
-# Libftビルド
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-# オブジェクトファイル作成（ディレクトリも作る）
 $(OBJDIR)/%.o: %.c
-	@mkdir -p $(dir $@)
+	@$(MKDIR) $(dir $@)
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 bonus: $(BONUS_NAME)
 
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
-	rm -rf $(OBJDIR)
+	$(RM_DIR) $(OBJDIR)
 
 fclean:
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	rm -f $(NAME) $(BONUS_NAME)
+	# @s$(MAKE) -C $(LIBFT_DIR) fclean -s
+	$(MAKE) -C $(LIBFT_DIR) fclean -s
+	$(RM_DIR) $(NAME) $(BONUS_NAME)
 
 re: fclean all
+
+run:
+	$(MAKE) re
+	clear
+	./$(NAME)
+
+run_b:
+	$(RM_DIR) $(NAME) $(BONUS_NAME)
+	$(MAKE) bonus
+	clear
+	./$(BONUS_NAME)
+
+
+# test_all
+# test_h + test_e
+test_a:
+
+# all happy paths
+test_h:
+
+# all error cases
+test_e:
+
+#いっぱい作る
+TESTCASES0 = "0 1 2 3"
+
+test0:
+	$(MAKE) re
+	clear
+	./$(NAME)
+
 
 .PHONY: all bonus clean fclean re
