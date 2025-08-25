@@ -26,7 +26,6 @@ LIBFT_DIR   = ./incs/libft
 
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
-# CFLAGS      = -Wall -Wextra
 INCLUDES    = -I./incs -I$(LIBFT_DIR)
 
 ########################################
@@ -103,13 +102,13 @@ MAKEFLAGS += --no-print-directory
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 
 $(BONUS_NAME): $(LIBFT) $(BOBJ)
-	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BOBJ) $(LIBFT)
+	@$(CC) $(CFLAGS) -o $(BONUS_NAME) $(BOBJ) $(LIBFT)
 
 $(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR) -s
 
 $(OBJDIR)/%.o: %.c
 	@$(MKDIR) $(dir $@)
@@ -118,16 +117,18 @@ $(OBJDIR)/%.o: %.c
 bonus: $(BONUS_NAME)
 
 clean:
-	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(LIBFT_DIR) clean -s
 	$(RM_DIR) $(OBJDIR)
 
+# -s オプションを付けることで、makeの実行ログがsilentになる
 fclean:
-	# @s$(MAKE) -C $(LIBFT_DIR) fclean -s
 	$(MAKE) -C $(LIBFT_DIR) fclean -s
+	$(RM_DIR) $(OBJDIR)
 	$(RM_DIR) $(NAME) $(BONUS_NAME)
 
 re: fclean all
 
+# デバッグのやり方
 run:
 	$(MAKE) re
 	clear
