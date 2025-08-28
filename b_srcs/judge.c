@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include "push_swap.h"
 
-void	do_command_checker(t_node *st_a, t_node *st_b, char *cmd)
+int	do_command_checker(t_node *st_a, t_node *st_b, char *cmd)
 {
 	if (!ft_strcmp(cmd, RA))
 		do_ra(st_a, 0);
@@ -38,4 +38,7 @@ void	do_command_checker(t_node *st_a, t_node *st_b, char *cmd)
 		do_pa(st_a, st_b, 0);
 	else if (!ft_strcmp(cmd, PB))
 		do_pb(st_a, st_b, 0);
+	else
+		return (1);
+	return (0);
 }

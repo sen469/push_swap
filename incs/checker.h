@@ -27,6 +27,6 @@
 # define PA "pa\n"
 # define PB "pb\n"
 
-void	do_command_checker(t_node *st_a, t_node *st_b, char *cmd);
+int	do_command_checker(t_node *st_a, t_node *st_b, char *cmd);
 
 #endif

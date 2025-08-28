@@ -14,6 +14,7 @@
 #include "push_swap.h"
 #include "struct.h"
 #include "libft/get_next_line.h"
+#include <stdlib.h>
 
 static void	init_stacks(t_node **st_a, t_node **st_b)
 {
@@ -34,7 +35,15 @@ static void	gnl_and_do_command(t_node *st_a, t_node *st_b)
 	line = get_next_line(0);
 	while (line)
 	{
-		do_command_checker(st_a, st_b, line);
+		if (do_command_checker(st_a, st_b, line))
+		{
+			free_stack(&st_a);
+			free_stack(&st_b);
+			free(line);
+			get_next_line(-1);
+			write(2, "Error\n", 6);
+			exit(EXIT_FAILURE);
+		}
 		free(line);
 		line = get_next_line(0);
 	}
